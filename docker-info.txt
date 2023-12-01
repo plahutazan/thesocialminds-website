@@ -1,40 +1,45 @@
 docker build -t thesocialminds-website .
 
-docker run --restart always -d -p 80:26114 unclezann/thesocialminds-website
+docker run --restart always -d -p 80:161207 thesocialminds-website
 
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
 #TOOLS
-cmd >$ docker image ls                       --(helps you see all the images)
-cmd >$ docker ps -a                          --(shows all containers)
-cmd >$ docker run -it thesocialminds-website     --(runs docker, with user interface, interactive, cmd)
+cmd >$ docker image ls                                       --(helps you see all the images)
+cmd >$ docker ps -a                                          --(shows all containers)
+cmd >$ docker run -it thesocialminds-website                --(runs docker, with user interface, interactive, cmd)
 
-cmd >$ docker stop thesocialminds-website              --(Stop the container)
+cmd >$ docker stop thesocialminds-website                   --(Stop the container)
 
-cmd >$ docker rm thesocialminds-website                --(Remove the container to prevent auto-restart)
+cmd >$ docker rm thesocialminds-website                     --(Remove the container to prevent auto-restart)
 
 
 
-cmd >$ docker stop $(docker ps -q)                               --(STOPS ALL CONTANIERS)
-cmd >$ docker container prune -f && docker image prune -a -f     --(REMOVES ALL CONTANIERS)
-
+docker stop $(docker ps -q) ; docker container prune -f ; docker image prune -a -f
 
 -----------------------------------------------------------------------------------------------------------------
 
 #PUSHING
 
-docker tag thesocialminds-website unclezann/thesocialminds-website
-docker login
+docker build -t thesocialminds-website .; docker tag thesocialminds-website unclezann/thesocialminds-website; docker login;
 docker push unclezann/thesocialminds-website
-
 
 -----------------------------------------------------------------------------------------------------------------
 
 #For starting a new server, the installation process.
+
 sudo apt update && sudo apt install -y apt-transport-https ca-certificates curl software-properties-common && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" && sudo apt update && sudo apt install -y docker-ce
 sudo systemctl start docker
 
 docker pull unclezann/thesocialminds-website
+docker run --restart always -d -p 80:161207 unclezann/thesocialminds-website
+
 
 -----------------------------------------------------------------------------------------------------------------
+SERVER:
+
+
+docker stop $(docker ps -q) ; docker container prune -f ; docker image prune -a -f;
+docker pull unclezann/thesocialminds-website;
+docker run --restart always -d -p 80:161207 unclezann/thesocialminds-website
