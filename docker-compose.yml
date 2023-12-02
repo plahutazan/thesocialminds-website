@@ -1,0 +1,9 @@
+version: '3'
+services:
+  frontend:
+    build: ./react-app
+    network_mode: "host"
+  backend:
+    build: ./fastapi-app
+    ports:
+      - 1749:1749

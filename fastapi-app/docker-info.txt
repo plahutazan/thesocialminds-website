@@ -1,6 +1,6 @@
 docker build -t thesocialminds-website .
 
-docker run --restart always -d -p 80:161207 thesocialminds-website
+docker run --restart always -d -p 80:1749 thesocialminds-website
 
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ sudo apt update && sudo apt install -y apt-transport-https ca-certificates curl 
 sudo systemctl start docker
 
 docker pull unclezann/thesocialminds-website
-docker run --restart always -d -p 80:161207 unclezann/thesocialminds-website
+docker run --restart always -d -p 80:1749 unclezann/thesocialminds-website
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -42,4 +42,4 @@ SERVER:
 
 docker stop $(docker ps -q) ; docker container prune -f ; docker image prune -a -f;
 docker pull unclezann/thesocialminds-website;
-docker run --restart always -d -p 80:161207 unclezann/thesocialminds-website
+docker run --restart always -d -p 80:1749 unclezann/thesocialminds-website
